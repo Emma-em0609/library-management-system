@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система управління бібліотекою</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="container">
+    <h1> Система управління бібліотекою</h1>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showTab('books', event)">Книги</button>
+        <button class="tab-btn" onclick="showTab('readers', event)">Читачі</button>
+        <button class="tab-btn" onclick="showTab('loans', event)">Видача книг</button>
+    </div>
+
+
+    <div id="books-tab" class="tab-content active">
+        <h2>Книги</h2>
+        <form id="book-form" class="form">
+            <input type="hidden" id="book-id">
+            <input type="text" id="book-title" placeholder="Назва книги" required>
+            <input type="text" id="book-author" placeholder="Автор" required>
+            <input type="text" id="book-isbn" placeholder="ISBN">
+            <input type="number" id="book-year" placeholder="Рік видання">
+            <input type="number" id="book-quantity" placeholder="Кількість" min="1" value="1">
+            <button type="submit">Зберегти</button>
+            <button type="button" onclick="resetBookForm()">Скасувати</button>
+        </form>
+        <table id="books-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Назва</th>
+                <th>Автор</th>
+                <th>ISBN</th>
+                <th>Рік</th>
+                <th>Кількість</th>
+                <th>Доступно</th>
+                <th>Дії</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+
+    <div id="readers-tab" class="tab-content">
+        <h2>Читачі</h2>
+        <form id="reader-form" class="form">
+            <input type="hidden" id="reader-id">
+            <input type="text" id="reader-name" placeholder="ПІБ" required>
+            <input type="email" id="reader-email" placeholder="Email">
+            <input type="tel" id="reader-phone" placeholder="Телефон">
+            <button type="submit">Зберегти</button>
+            <button type="button" onclick="resetReaderForm()">Скасувати</button>
+        </form>
+        <table id="readers-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>ПІБ</th>
+                <th>Email</th>
+                <th>Телефон</th>
+                <th>Дата реєстрації</th>
+                <th>Дії</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+
+    <div id="loans-tab" class="tab-content">
+        <h2>Видача книг</h2>
+        <form id="loan-form" class="form">
+            <select id="loan-book" required>
+                <option value="">Оберіть книгу</option>
+            </select>
+            <select id="loan-reader" required>
+                <option value="">Оберіть читача</option>
+            </select>
+            <button type="submit">Видати книгу</button>
+        </form>
+        <table id="loans-table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Книга</th>
+                <th>Читач</th>
+                <th>Дата видачі</th>
+                <th>Дата повернення</th>
+                <th>Статус</th>
+                <th>Дії</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
